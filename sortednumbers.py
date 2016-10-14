@@ -1,22 +1,10 @@
 import random
 
 def is_sorted(lista):
-    indice=1
-    comprobante=False
-    for items in lista:
-        if (indice)<len(lista):
-            if items<=lista[indice]:
-                comprobante=True
-                if (indice-1)==len(lista):
-                    return True
-                else:
-                    indice=indice+1
-            else:
-                return False
-        elif comprobante==False:
-            return False
-        else:
-            return True
+    for i in range(len(the_list)-1):
+    if(the_list[i] > the_list[i+1]):
+         return False
+     return True
 
 print("Let's check if the numbers are in order")
 numbers=int(input("How many numbers would you like to try? "))
