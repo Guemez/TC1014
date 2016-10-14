@@ -18,6 +18,14 @@ for word in range(0,len(new)):
 for items in range(0,len(countedwords)):
     print (str(countedwords[items])+": "+str(frecuency[items]))"""
 
+def filtrar(text):
+    not_acceptable_but_with_space=[",",";",".","$","#","%","&","(",")","?",":","@","!"]
+    filtered_words=text
+    for i in not_acceptable_but_with_space:
+        filtered_words=filtered_words.split(i)
+        filtered_words="".join(filtered_words)
+    return filtered_words
+
 def count_words(texto):
     contador={}
     listatexto=texto.split()
@@ -28,23 +36,24 @@ def count_words(texto):
             contador[word]=contador[word]+1
     return contador
 
-not_acceptable_but_with_space=[",",";",".","$","#","%","&","(",")","?",":","@","!"]
 print ("Hola usuario, hoy contaremos la frcuencia de cada palabra en un texto introducido o abriendo un archivo .txt")
-respuesta=str(input("Desea escribir el texto o abrir un archivo? [T/F] ")).lower()
-if respuesta=="t":
-    texto_usuario=str(input("Introduce el texto \n")).lower()
-    filtered_words=texto_usuario
-    for i in not_acceptable_but_with_space:
-        filtered_words=filtered_words.split(i)
-        filtered_words="".join(filtered_words)
-    print(count_words(filtered_words))
-else:
-    text_file=input("Introduce el nombre del archivo que deseas abrir \n")
-    archivo=open(text_file,'r')
-    for line in archivo:
-        archivo_nuevo=line.lower()
-    filtered_words=archivo_nuevo
-    for i in not_acceptable_but_with_space:
-        filtered_words=filtered_words.split(i)
-        filtered_words="".join(filtered_words)
-    print(count_words(filtered_words))
+while True:
+    try:
+        respuesta=str(input("Desea escribir el texto o abrir un archivo? [T/F] ")).lower()
+        if respuesta=="t":
+            texto_usuario=str(input("Introduce el texto \n")).lower()
+            filtrado=filtrar(texto_usuario)
+            print(count_words(filtrado))
+            break
+        elif respuesta=="f":
+            text_file=input("Introduce el nombre del archivo que deseas abrir \n")
+            archivo=open(text_file,'r')
+            for line in archivo:
+                archivo_nuevo=line.lower()
+                filtrado=filtrar(archivo_nuevo)
+                print(count_words(filtrado))
+                break
+        else:
+            print ("Escribe T o F")
+    except:
+        print("Por favor escribe 'T' o 'F'")
