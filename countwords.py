@@ -52,7 +52,7 @@ while True:
                 archivo_nuevo=line.lower()
                 filtrado=filtrar(archivo_nuevo)
                 print(count_words(filtrado))
-                break
+            break
         else:
             print ("Escribe T o F")
     except:
