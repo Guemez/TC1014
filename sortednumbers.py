@@ -1,9 +1,9 @@
 import random
 
 def is_sorted(lista):
-    for i in range(len(the_list)-1):
-    if(the_list[i] > the_list[i+1]):
-         return False
+    for i in range(len(lista)-1):
+        if(lista[i] > lista[i+1]):
+             return False
      return True
 
 print("Let's check if the numbers are in order")
